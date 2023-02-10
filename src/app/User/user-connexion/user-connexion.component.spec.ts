@@ -1,15 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { UserConnexionComponent } from './user-connexion.component';
 
-export class DataService {
+export class UserService {
+
+  private baseUrl = 'http://localhost:3000/users';
 
   constructor(private http: HttpClient) { }
 
-  // getData():Observable: <User[]> {
-  //   return this.http.get<User(`http://localhost:3000/${users}`);
-  // }
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/user`);
+  }
 }
 describe('UserConnexionComponent', () => {
   let component: UserConnexionComponent;
